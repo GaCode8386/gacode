@@ -57,15 +57,15 @@
     box-shadow: 0 0 15px rgba(255, 160, 180, 0.5);
     display: none;
     opacity: 0;
-    transform: translateX(40px) scale(0.9); /* 🎬 Ban đầu hơi nhỏ và lệch phải */
+    transform: translateX(40px) scale(0.9);
     transition: opacity 1s ease, transform 1s ease;
   }
 
-  /* Khi hiển thị ảnh */
+
   .photo.show {
     display: block;
     opacity: 1;
-    transform: translateX(0) scale(1); /* ✨ Trượt nhẹ và phóng to */
+    transform: translateX(0) scale(1);
   }
 
   #startBtn {
@@ -105,7 +105,7 @@
 
   audio { display: none; }
 
-  /* 🌷 Responsive cho điện thoại */
+
   @media (max-width: 768px) {
     body {
       padding-top: 80px;
@@ -131,10 +131,6 @@
   }
 </style>
 </head>
-
-
-
-<!-- bản quyền -->
 
 
 <footer class="floating-footer">
@@ -168,11 +164,6 @@
     100% { opacity: 1; transform: translateX(-50%) scale(1.05); }
   }
 </style>
-
-
-<!-- // -->
-
-
 
 
 <body>
@@ -242,15 +233,6 @@ function type() {
   }
 }
 
-// function showPhotos() {
-//   photo1.style.display = "block";
-//   setTimeout(() => photo1.classList.add("show"), 100);
-
-//   setTimeout(() => {
-//     photo2.style.display = "block";
-//     setTimeout(() => photo2.classList.add("show"), 100);
-//   }, 2000);
-// }
 function showPhotos() {
   photo1.style.display = "block";
   photo1.style.opacity = "1";
