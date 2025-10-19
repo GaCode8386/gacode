@@ -133,6 +133,7 @@
 </head>
 
 
+<!-- bản quyền -->
 <footer class="floating-footer">
   © 2025 Bản quyền thuộc về <span>VươngIT</span> 💖
 </footer>
@@ -150,8 +151,8 @@
     opacity: 0.8;
     animation: fadePulse 2s ease-in-out infinite alternate;
     user-select: none;
-    pointer-events: none;
-    z-index: 1000; 
+    pointer-events: none; /* không cản click */
+    z-index: 1000; /* đảm bảo nằm trên nền */
   }
 
   .floating-footer span {
@@ -164,6 +165,11 @@
     100% { opacity: 1; transform: translateX(-50%) scale(1.05); }
   }
 </style>
+
+
+<!-- // -->
+
+
 
 
 <body>
@@ -233,6 +239,15 @@ function type() {
   }
 }
 
+// function showPhotos() {
+//   photo1.style.display = "block";
+//   setTimeout(() => photo1.classList.add("show"), 100);
+
+//   setTimeout(() => {
+//     photo2.style.display = "block";
+//     setTimeout(() => photo2.classList.add("show"), 100);
+//   }, 2000);
+// }
 function showPhotos() {
   photo1.style.display = "block";
   photo1.style.opacity = "1";

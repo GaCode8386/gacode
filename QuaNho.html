@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 20/10 💖</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #fff8fb;
+    color: #cc3366;
+    font-family: "Courier New", monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  #message {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    width: 80%;
+    max-width: 650px;
+    text-align: left;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 20px;
+    background-color: #cc3366;
+    animation: blink 0.8s infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  #startBtn {
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff8fa3;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ffb6c1;
+    transition: transform 0.2s;
+  }
+
+  #startBtn:hover {
+    transform: scale(1.05);
+  }
+
+  .heart {
+    position: fixed;
+    bottom: 0;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: float 5s linear forwards;
+    pointer-events: none;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.8); opacity: 0; }
+  }
+
+  audio { display: none; }
+</style>
+</head>
+<body>
+  <button id="startBtn">💌 Nhấn Vô Đây Nè 💌</button>
+  <div id="message" style="display:none;"></div>
+  <div class="cursor" style="display:none;"></div>
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1e7d1b9a5b.mp3?filename=romantic-piano-112199.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const lines = [
+      "Thư thân mến,",
+      "",
+      "Nhân ngày 20 tháng 10...",
+      "Mình không có hoa hồng, cũng chẳng có quà xa xỉ,",
+      "Chỉ có vài dòng chữ nhỏ gửi đến bạn thuii.",
+      "",
+      "Gửi Thư chút lạc quan,",
+      "không chờ ngày lấy lại",
+      "Dù ngày mai ngang trái,",
+      "mong Thư ít thở dài🥰",
+      "",
+      "Chúc Thư luôn vui vẻ, luôn xinh đẹp,",
+      "Và hãy yêu thương bản thân mình nhiều hơn💕",
+      "",
+      "Chúc Thư một ngày 20/10 thật hạnh phúc nhé!"
+    ];
+
+    const msg = document.getElementById("message");
+    const cursor = document.querySelector(".cursor");
+    const btn = document.getElementById("startBtn");
+    const music = document.getElementById("bgMusic");
+
+    let line = 0, char = 0;
+
+    btn.addEventListener("click", () => {
+      btn.style.display = "none";
+      msg.style.display = "block";
+      cursor.style.display = "inline-block";
+      music.play();
+      type();
+      setInterval(createHeart, 600);
+    });
+
+    function type() {
+      if (line < lines.length) {
+        if (char < lines[line].length) {
+          msg.innerHTML += lines[line][char];
+          char++;
+          setTimeout(type, 80);
+        } else {
+          msg.innerHTML += "\n";
+          char = 0;
+          line++;
+          setTimeout(type, 400);
+        }
+      } else {
+        cursor.style.display = "none";
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 10 + "px";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+  </script>
+</body>
+</html>
